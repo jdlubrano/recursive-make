@@ -2,7 +2,6 @@ CC=g++
 CFLAGS= -c -g -Wall
 HEADERS = bar.h
 SUBDIRS = sub baz
-CLEANABLE = $(SUBDIRS)
 OBJ = main.o bar.o
 BUILD = build
 
@@ -26,6 +25,8 @@ subdirs: $(SUBDIRS)
 .PHONY: all clean subdirs $(SUBDIRS) $(BUILD)
 
 clean: $(SUBDIRS)
-	make clean -C $<
+	for dir in $(SUBDIRS); do \
+          make clean -C $$dir; \
+        done
+	make clean -C $(BUILD)
 	rm -f *.o
-	rm -rf $(BUILD)/*.o
