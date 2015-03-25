@@ -1,0 +1,4 @@
+/*.o
+/foo/*.o
+/build/*.o
+/build/exe
