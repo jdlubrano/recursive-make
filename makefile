@@ -17,10 +17,9 @@ move: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $<
 
 subdirs: $(SUBDIRS)
-	$(MAKE) -C $<
 	
-#$(SUBDIRS):
-#	$(MAKE) -C $@
+$(SUBDIRS):
+	$(MAKE) -C $@
 
 .PHONY: all clean subdirs $(SUBDIRS) $(BUILD)
 
